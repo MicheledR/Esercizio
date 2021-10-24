@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <input class="form-control mr-sm-2 search m-4" type="text" name="search"  [(ngModel)]="url"  placeholder=" Inserisci url articolo">
+        <button type="button" class="btn btn-primary" (click)="search()">Cerca</button>
+        <p>{{url}}</p>
+    <div class="row " *ngIf="view else articoloSingolo">
+        
+        <div class="col col-sm-12 col-lg-4 col-md-6 col-12 p-2" *ngFor="let a of listaArticolo">
+            <div class="card">
+                <img [src]="a.preview_image" width="100%" class="image-shadow">   
+                <div class="card-body">
+                    <p class="text-left h5" [innerHTML]="a.title"><b></b></p>
+                    <p style="font-weight: 500;" class="text-left">{{a.author}}</p>
+                    
+                    <p class="text-left " [innerHTML]="a.body"  ><b> </b>
+                    </p>
+                  
+                    
+                    <p class="text-left"><b>Data: </b>{{a.first_publish_date | date:"dd/MM/yy"}}</p>
+                    <p class="text-left"><b>Abstract: </b>{{a.abstract}}</p>
+                    <hr>
+                  
+                </div>
+            </div>   
+        </div> 
+    </div>
+    <ng-template #articoloSingolo>
+        <div class="card">
+            <img [src]="articolo.preview_image" width="100%" class="image-shadow">   
+            <div class="card-body">
+                <p class="text-left h5" [innerHTML]="articolo.title"><b></b></p>
+                <p style="font-weight: 500;" class="text-left">{{articolo.author}}</p>
+                
+                <p class="text-left " [innerHTML]="articolo.body"  ><b> </b>
+                </p>
+              
+                
+                <p class="text-left"><b>Data: </b>{{articolo.first_publish_date | date:"dd/MM/yy"}}</p>
+                <p class="text-left"><b>Abstract: </b>{{articolo.abstract}}</p>
+                <hr>
+              
+            </div>
+        </div>  
+    </ng-template>
+  </div>
